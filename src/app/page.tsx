@@ -15,40 +15,43 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1604928148964-16a75005e042?q=80&w=2938&auto=format&fit=crop')",
+            /* Menggunakan URL gambar kapal layar di Indonesia yang lebih stabil */
+            backgroundImage: "url('https://i.pinimg.com/1200x/17/4d/1e/174d1ea6e7e3d79b11cc2ddf7e8bd489.jpg')",
           }}
         >
           {/* Overlay gradient agar teks putih tetap terbaca mewah */}
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent" />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center mt-24">
-          <h1
-            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-wide max-w-5xl leading-[1.1] drop-shadow-2xl"
-            style={{ fontFamily: 'var(--font-playfair)' }}
-          >
-            WHERE THE OCEAN <br className="hidden md:block" /> MEETS THE WILD.
-          </h1>
 
-          <p className="text-lg md:text-xl text-white/95 mb-12 max-w-2xl leading-relaxed font-light drop-shadow-md">
-            Sail through the extraordinary landscapes of Komodo, from coral gardens beneath the sea to rugged islands above.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
-            <Button variant="secondary" size="lg" className="w-full sm:w-auto text-base px-10 py-6 shadow-xl">
-              Plan Your Journey
-            </Button>
-            
-            {/* Secondary CTA dengan efek Glassmorphism (Kaca) */}
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto text-base px-10 py-6 bg-black/20 text-white border-white/50 backdrop-blur-md hover:bg-white hover:text-primary transition-all duration-300"
+        {/* Hero Content - Diubah menjadi Left-Aligned agar tidak menutupi kapal */}
+        <div className="relative z-10 container mx-auto px-4 md:px-8 xl:px-0 flex flex-col items-start justify-center h-full pt-20">
+          <div className="max-w-3xl">
+            <h1
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-wide leading-[1.1] drop-shadow-2xl"
+              style={{ fontFamily: 'var(--font-playfair)' }}
             >
-              Explore the Fleet
-            </Button>
+              WHERE THE OCEAN <br className="hidden md:block" /> MEETS THE WILD.
+            </h1>
+
+            <p className="text-lg md:text-xl text-white/95 mb-10 max-w-xl leading-relaxed font-light drop-shadow-md">
+              Sail through the extraordinary landscapes of Komodo, from coral gardens beneath the sea to rugged islands above.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto text-base px-10 py-6 shadow-xl">
+                Plan Your Journey
+              </Button>
+              
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto text-base px-10 py-6 bg-black/20 text-white border-white/50 backdrop-blur-md hover:bg-white hover:text-primary transition-all duration-300"
+              >
+                Explore the Fleet
+              </Button>
+            </div>
           </div>
         </div>
       </section>

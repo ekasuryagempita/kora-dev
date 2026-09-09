@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,7 +51,16 @@ export function Navbar() {
               )}
               style={{ fontFamily: "var(--font-playfair)" }}
             >
-              KORA
+              <Image 
+              src="/logo-3.png" /* Ubah menjadi /logo.svg jika file kamu berformat SVG */
+              alt="KORA" 
+              width={120} 
+              height={40}
+              className={cn(
+                "object-contain transition-all duration-500",
+                isScrolled ? "brightness-100" : "brightness-0 invert" 
+              )}
+            />
             </span>
           </Link>
         </div>

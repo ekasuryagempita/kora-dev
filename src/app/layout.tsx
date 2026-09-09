@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans, Playfair_Display } from "next/font/google";
 import "../styles/globals.css";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer"; // Tambahkan baris ini
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
         <main className="flex-1">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
