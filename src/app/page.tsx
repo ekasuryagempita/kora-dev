@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Users, Anchor } from "lucide-react"; // Tambahkan baris ini
+import { Users, Anchor, Waves, Utensils, ShieldCheck, MapPin } from "lucide-react"; // Ikon tambahan
 
 export default function Home() {
   return (
@@ -303,6 +303,149 @@ export default function Home() {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* 
+        CABIN SHOWCASE 
+        Rule 40: Stay Close to the Sea. Tidak perlu menu "Cabin" besar, cukup tampilkan sekilas. 
+      */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            
+            {/* Bagian Gambar Cabin */}
+            <div className="w-full lg:w-1/2 relative">
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative">
+                {/* Vibe: Luxury wooden cabin, white sheets, ocean view */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: "url('https://i.pinimg.com/1200x/06/62/42/066242b39f628719aa0e2033018718c3.jpg')" }} 
+                />
+              </div>
+              {/* Ornamen pelengkap kemewahan */}
+              <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary/10 rounded-full blur-3xl -z-10" />
+            </div>
+
+            {/* Bagian Teks */}
+            <div className="w-full lg:w-1/2">
+              <h2 
+                className="text-4xl md:text-5xl font-bold text-primary mb-6"
+                style={{ fontFamily: 'var(--font-playfair)' }}
+              >
+                Stay Close to the Sea
+              </h2>
+              <p className="text-lg text-muted-foreground font-light mb-8 leading-relaxed">
+                Our cabins are meticulously crafted sanctuaries of wood and warm light. Wake up to the gentle sound of waves and panoramic views of the archipelago right from your window. Each space is designed with absolute comfort in mind, featuring en-suite bathrooms and premium amenities.
+              </p>
+              
+              <ul className="space-y-4 mb-10 text-primary">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                  Ocean-view windows in every cabin
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                  Private en-suite bathrooms
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                  Premium linens and climate control
+                </li>
+              </ul>
+
+              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+                Explore Cabins
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 
+        TRUST / PRACTICAL INFO 
+        Rule 41: Menjawab hal praktis (safety, food, snorkeling, pickup) dengan grouping. 
+      */}
+      <section className="py-24 bg-muted/30 border-t border-border">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+              The KORA Standard
+            </h2>
+            <p className="text-muted-foreground font-light text-lg">
+              Everything you need for a seamless journey is thoughtfully prepared.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-16 h-16 bg-card rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                <ShieldCheck className="w-8 h-8 text-secondary" />
+              </div>
+              <h4 className="text-xl font-semibold text-primary mb-3">Safety First</h4>
+              <p className="text-muted-foreground font-light text-sm leading-relaxed">
+                Equipped with modern navigation and certified crews trained for all marine emergencies.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-16 h-16 bg-card rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                <Utensils className="w-8 h-8 text-secondary" />
+              </div>
+              <h4 className="text-xl font-semibold text-primary mb-3">Curated Dining</h4>
+              <p className="text-muted-foreground font-light text-sm leading-relaxed">
+                Enjoy daily freshly prepared meals blending local Indonesian flavors with international classics.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-16 h-16 bg-card rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                <Waves className="w-8 h-8 text-secondary" />
+              </div>
+              <h4 className="text-xl font-semibold text-primary mb-3">Water Activities</h4>
+              <p className="text-muted-foreground font-light text-sm leading-relaxed">
+                Premium snorkeling gear, fins, and paddleboards are included for your daily explorations.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-16 h-16 bg-card rounded-full flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                <MapPin className="w-8 h-8 text-secondary" />
+              </div>
+              <h4 className="text-xl font-semibold text-primary mb-3">Easy Transfers</h4>
+              <p className="text-muted-foreground font-light text-sm leading-relaxed">
+                Complimentary pickup and drop-off from your hotel or the airport in Labuan Bajo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 
+        FINAL CTA 
+        Rule 42: READY TO SAIL? Tell us how you'd like to explore[cite: 1]. 
+      */}
+      <section className="py-32 relative overflow-hidden flex items-center justify-center">
+        {/* Background Image with Parallax Vibe */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop')" }} 
+        />
+        <div className="absolute inset-0 bg-primary/90" /> {/* Deep ocean blue overlay */}
+
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <h2 
+            className="text-4xl md:text-6xl font-bold text-white mb-6"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            READY TO SAIL?
+          </h2>
+          <p className="text-xl text-white/80 font-light mb-10 max-w-xl mx-auto">
+            Tell us how you&apos;d like to explore.
+          </p>
+          <Button variant="secondary" size="lg" className="px-10 py-6 text-base shadow-xl">
+            Plan Your Journey
+          </Button>
         </div>
       </section>
     </main>
