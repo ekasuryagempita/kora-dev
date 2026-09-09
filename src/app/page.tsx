@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Users, Anchor } from "lucide-react"; // Tambahkan baris ini
 
 export default function Home() {
   return (
@@ -188,6 +189,116 @@ export default function Home() {
                 <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
                   Explore Journey
                 </Button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 
+        FLEET SECTION 
+        Rule 39: Meet the Fleet. Kora Tala, Kora Nera, Kora Samawa.
+        Menampilkan hero image, character, capacity, cabin count, dan CTA[cite: 1].
+      */}
+      <section className="py-24 bg-muted/30">
+        <div className="container mx-auto px-4 max-w-7xl">
+          
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 
+              className="text-4xl md:text-5xl font-bold text-primary mb-4"
+              style={{ fontFamily: 'var(--font-playfair)' }}
+            >
+              Meet the Fleet
+            </h2>
+            <p className="text-lg text-muted-foreground font-light">
+              Three vessels, each with its own soul. Designed to offer unparalleled comfort while navigating the wild beauty of the archipelago.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            {/* KORA TALA */}
+            <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col group">
+              <div className="h-64 relative overflow-hidden">
+                {/* Vibe: Clear day, calm ocean, elegant */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: "url('https://phinisitrip.com/wp-content/uploads/2026/04/lombok-harbor-phinisi-departure.webp')" }} 
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <div className="text-secondary text-sm tracking-widest uppercase mb-2 font-medium">The Guidance</div>
+                <h3 className="text-2xl font-bold text-primary mb-3" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Kora Tala
+                </h3>
+                <p className="text-muted-foreground font-light mb-6 flex-1">
+                  Representing the guiding star, Tala offers elegance and calm navigation. Perfect for those seeking a serene and composed journey across the sea.
+                </p>
+                
+                {/* Specs */}
+                <div className="flex items-center gap-6 mb-8 text-sm text-primary/80 border-t border-border pt-5">
+                  <div className="flex items-center gap-2"><Users className="w-4 h-4 text-secondary" /> 14 Guests</div>
+                  <div className="flex items-center gap-2"><Anchor className="w-4 h-4 text-secondary" /> 7 Cabins</div>
+                </div>
+                
+                <Button className="w-full" variant="outline">Explore Kora Tala</Button>
+              </div>
+            </div>
+
+            {/* KORA NERA */}
+            <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col group">
+              <div className="h-64 relative overflow-hidden">
+                {/* Vibe: Sunset, warm light, intimate */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: "url('https://093007acd4aeb68adf71.b-cdn.net/wp-content/uploads/2019/12/prana-blog1.jpg')" }} 
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <div className="text-secondary text-sm tracking-widest uppercase mb-2 font-medium">The Warmth</div>
+                <h3 className="text-2xl font-bold text-primary mb-3" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Kora Nera
+                </h3>
+                <p className="text-muted-foreground font-light mb-6 flex-1">
+                  Inspired by the lantern&apos;s glow, Nera radiates warmth and intimacy. An inviting space crafted for close connections and golden sunsets.
+                </p>
+                
+                {/* Specs */}
+                <div className="flex items-center gap-6 mb-8 text-sm text-primary/80 border-t border-border pt-5">
+                  <div className="flex items-center gap-2"><Users className="w-4 h-4 text-secondary" /> 10 Guests</div>
+                  <div className="flex items-center gap-2"><Anchor className="w-4 h-4 text-secondary" /> 5 Cabins</div>
+                </div>
+                
+                <Button className="w-full" variant="outline">Explore Kora Nera</Button>
+              </div>
+            </div>
+
+            {/* KORA SAMAWA */}
+            <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col group">
+              <div className="h-64 relative overflow-hidden">
+                {/* Vibe: Serene, soft horizon, calm bay */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: "url('https://093007acd4aeb68adf71.b-cdn.net/wp-content/uploads/2023/08/luxuryyachtpranabyatzaro.png')" }} 
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <div className="text-secondary text-sm tracking-widest uppercase mb-2 font-medium">The Serenity</div>
+                <h3 className="text-2xl font-bold text-primary mb-3" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Kora Samawa
+                </h3>
+                <p className="text-muted-foreground font-light mb-6 flex-1">
+                  Embodying harmony and peaceful waters. Samawa provides a grounded, natural retreat for those who wish to deeply align with the ocean.
+                </p>
+                
+                {/* Specs */}
+                <div className="flex items-center gap-6 mb-8 text-sm text-primary/80 border-t border-border pt-5">
+                  <div className="flex items-center gap-2"><Users className="w-4 h-4 text-secondary" /> 12 Guests</div>
+                  <div className="flex items-center gap-2"><Anchor className="w-4 h-4 text-secondary" /> 6 Cabins</div>
+                </div>
+                
+                <Button className="w-full" variant="outline">Explore Kora Samawa</Button>
               </div>
             </div>
 
