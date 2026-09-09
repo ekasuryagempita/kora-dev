@@ -81,6 +81,9 @@ export function Navbar() {
           <Link href="/about" className="hover:text-secondary transition-colors">
             ABOUT
           </Link>
+          <Link href="/contact" className="hover:text-secondary transition-colors">
+            CONTACT
+          </Link>
         </nav>
 
         {/* Kanan: CTA Button */}

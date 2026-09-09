@@ -17,8 +17,35 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "KORA | Komodo Sailing & Phinisi Experiences",
-  description: "Premium sailing company profile with interactive trip discovery.",
+  title: {
+    template: "%s | KORA Sailing",
+    default: "KORA | Luxury Komodo Sailing & Phinisi Charter", // Judul default di Homepage
+  },
+  description: "Experience cinematic luxury sailing across the Indonesian archipelago. Explore Komodo National Park, Lombok, and Flores aboard our premium handcrafted Phinisi fleet.",
+  keywords: ["Komodo Sailing", "Liveaboard Labuan Bajo", "Luxury Phinisi", "Komodo Boat Charter", "KORA Sailing", "Flores Expedition"],
+  authors: [{ name: "KORA Sailing" }],
+  openGraph: {
+    title: "KORA | Luxury Komodo Sailing",
+    description: "Experience cinematic luxury sailing across the Indonesian archipelago.",
+    url: "https://kora-sailing.com", // Ganti dengan domain aslimu nanti
+    siteName: "KORA Sailing",
+    images: [
+      {
+        url: "https://i.pinimg.com/1200x/fd/4e/14/fd4e14e2ff8b3f60fc0f741333375a0c.jpg", // Mengambil gambar dari folder public/ yang baru saja kamu masukkan
+        width: 1200,
+        height: 630,
+        alt: "KORA Luxury Phinisi in Komodo National Park",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KORA | Luxury Komodo Sailing",
+    description: "Experience cinematic luxury sailing across the Indonesian archipelago.",
+    images: ["https://i.pinimg.com/1200x/fd/4e/14/fd4e14e2ff8b3f60fc0f741333375a0c.jpg"],
+  },
 };
 
 export default function RootLayout({

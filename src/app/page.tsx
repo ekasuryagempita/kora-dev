@@ -1,31 +1,25 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Users, Anchor, Waves, Utensils, ShieldCheck, MapPin } from "lucide-react"; // Ikon tambahan
+import { Users, Anchor, Waves, Utensils, ShieldCheck, MapPin } from "lucide-react";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col">
-      {/* 
-        HERO SECTION 
-        Rule 35 & 36: Cinematic hero image[cite: 1].
-        Rule 65: Cinematic, Elegant, Natural[cite: 1].
-      */}
+      {/* HERO SECTION */}
       <section className="relative flex h-screen w-full items-center justify-center overflow-hidden">
         
         {/* Background Image: Vibe Pulau Komodo / Padar */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            /* Menggunakan URL gambar kapal layar di Indonesia yang lebih stabil */
             backgroundImage: "url('https://i.pinimg.com/1200x/17/4d/1e/174d1ea6e7e3d79b11cc2ddf7e8bd489.jpg')",
           }}
         >
-          {/* Overlay gradient agar teks putih tetap terbaca mewah */}
           <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-black/20 to-transparent" />
         </div>
 
-
-        {/* Hero Content - Diubah menjadi Left-Aligned agar tidak menutupi kapal */}
+        {/* Hero Content - Left-Aligned */}
         <div className="relative z-10 container mx-auto px-4 md:px-8 xl:px-0 flex flex-col items-start justify-center h-full pt-20">
           <div className="max-w-3xl">
             <h1
@@ -40,26 +34,27 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
-              <Button variant="secondary" size="lg" className="w-full sm:w-auto text-base px-10 py-6 shadow-xl">
-                Plan Your Journey
-              </Button>
+              <Link href="/contact" className="w-full sm:w-auto">
+                <Button variant="secondary" size="lg" className="w-full text-base px-10 py-6 shadow-xl">
+                  Plan Your Journey
+                </Button>
+              </Link>
               
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full sm:w-auto text-base px-10 py-6 bg-black/20 text-white border-white/50 backdrop-blur-md hover:bg-white hover:text-primary transition-all duration-300"
-              >
-                Explore the Fleet
-              </Button>
+              <Link href="/fleet" className="w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full text-base px-10 py-6 bg-black/20 text-white border-white/50 backdrop-blur-md hover:bg-white hover:text-primary transition-all duration-300"
+                >
+                  Explore the Fleet
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 
-        THE KORA STORY 
-        Rule 37: Koral + Ora. Menjelaskan identitas brand. Harus pendek. 
-      */}
+      {/* THE KORA STORY */}
       <section className="py-24 md:py-32 bg-background flex items-center justify-center">
         <div className="container mx-auto px-4 max-w-4xl text-center">
           
@@ -84,15 +79,11 @@ export default function Home() {
 
         </div>
       </section>
-      {/* 
-        JOURNEYS SECTION 
-        Rule 38: Choose Your Journey. Card menampilkan title, short description, duration, starting price, dan CTA[cite: 1].
-        Rule 126: Authenticity (Gambar lebih relevan)[cite: 1].
-      */}
+
+      {/* JOURNEYS SECTION */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 max-w-7xl">
           
-          {/* Header Section tanpa tombol "View All" yang redundan */}
           <div className="max-w-2xl mb-16">
             <h2 
               className="text-4xl md:text-5xl font-bold text-primary mb-4"
@@ -105,12 +96,10 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Grid Layout untuk Immersive Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            {/* Card 1: Komodo / Labuan Bajo */}
-            <div className="group relative h-[500px] rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500">
-              {/* Gambar: Pulau Padar / Komodo */}
+            {/* Card 1: Komodo Signature */}
+            <div className="group relative h-[500px] rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500">
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: "url('https://akcdn.detik.net.id/community/media/visual/2023/05/21/labuan-bajo.png?w=700&q=90')" }}
@@ -131,15 +120,16 @@ export default function Home() {
                 <p className="text-white/80 font-light mb-6 line-clamp-2">
                   Our classic sailing experience through the heart of Komodo National Park. Encounter dragons, pink beaches, and manta rays.
                 </p>
-                <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
-                  Explore Journey
-                </Button>
+                <Link href="/journeys/komodo-signature">
+                  <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
+                    Explore Journey
+                  </Button>
+                </Link>
               </div>
             </div>
 
             {/* Card 2: Lombok to Labuan Bajo */}
-            <div className="group relative h-[500px] rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500">
-              {/* Gambar: Kapal layar / Lautan lepas */}
+            <div className="group relative h-[500px] rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500">
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: "url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/33/26/3d/on-the-westernmost-tip.jpg?w=1400&h=800&s=1')" }}
@@ -160,15 +150,16 @@ export default function Home() {
                 <p className="text-white/80 font-light mb-6 line-clamp-2">
                   A grand one-way voyage crossing the majestic Wallace Line. Witness changing landscapes from volcanic craters to savannahs.
                 </p>
-                <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
-                  Explore Journey
-                </Button>
+                <Link href="/journeys/lombok-to-labuan-bajo">
+                  <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
+                    Explore Journey
+                  </Button>
+                </Link>
               </div>
             </div>
 
             {/* Card 3: Wae Rebo */}
-            <div className="group relative h-[500px] rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 md:col-span-2 lg:col-span-1">
-              {/* Gambar: Pegunungan Hijau / Manggarai Highland */}
+            <div className="group relative h-[500px] rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 md:col-span-2 lg:col-span-1">
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                 style={{ backgroundImage: "url('https://labuanbajotour.com/wp-content/uploads/2018/08/Desa-Wae-Rebo-sumber-ig-carnaby.indonesia.jpg')" }}
@@ -189,9 +180,11 @@ export default function Home() {
                 <p className="text-white/80 font-light mb-6 line-clamp-2">
                   Venture inland to the mystical village above the clouds. A cultural immersion in the highlands of Flores.
                 </p>
-                <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
-                  Explore Journey
-                </Button>
+                <Link href="/journeys/wae-rebo">
+                  <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
+                    Explore Journey
+                  </Button>
+                </Link>
               </div>
             </div>
 
@@ -199,11 +192,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 
-        FLEET SECTION 
-        Rule 39: Meet the Fleet. Kora Tala, Kora Nera, Kora Samawa.
-        Menampilkan hero image, character, capacity, cabin count, dan CTA[cite: 1].
-      */}
+      {/* FLEET SECTION */}
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 max-w-7xl">
           
@@ -224,7 +213,6 @@ export default function Home() {
             {/* KORA TALA */}
             <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col group">
               <div className="h-64 relative overflow-hidden">
-                {/* Vibe: Clear day, calm ocean, elegant */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                   style={{ backgroundImage: "url('https://phinisitrip.com/wp-content/uploads/2026/04/lombok-harbor-phinisi-departure.webp')" }} 
@@ -239,20 +227,20 @@ export default function Home() {
                   Representing the guiding star, Tala offers elegance and calm navigation. Perfect for those seeking a serene and composed journey across the sea.
                 </p>
                 
-                {/* Specs */}
                 <div className="flex items-center gap-6 mb-8 text-sm text-primary/80 border-t border-border pt-5">
                   <div className="flex items-center gap-2"><Users className="w-4 h-4 text-secondary" /> 14 Guests</div>
                   <div className="flex items-center gap-2"><Anchor className="w-4 h-4 text-secondary" /> 7 Cabins</div>
                 </div>
                 
-                <Button className="w-full" variant="outline">Explore Kora Tala</Button>
+                <Link href="/fleet/kora-tala" className="w-full">
+                  <Button className="w-full" variant="outline">Explore Kora Tala</Button>
+                </Link>
               </div>
             </div>
 
             {/* KORA NERA */}
             <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col group">
               <div className="h-64 relative overflow-hidden">
-                {/* Vibe: Sunset, warm light, intimate */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                   style={{ backgroundImage: "url('https://093007acd4aeb68adf71.b-cdn.net/wp-content/uploads/2019/12/prana-blog1.jpg')" }} 
@@ -267,20 +255,20 @@ export default function Home() {
                   Inspired by the lantern&apos;s glow, Nera radiates warmth and intimacy. An inviting space crafted for close connections and golden sunsets.
                 </p>
                 
-                {/* Specs */}
                 <div className="flex items-center gap-6 mb-8 text-sm text-primary/80 border-t border-border pt-5">
                   <div className="flex items-center gap-2"><Users className="w-4 h-4 text-secondary" /> 10 Guests</div>
                   <div className="flex items-center gap-2"><Anchor className="w-4 h-4 text-secondary" /> 5 Cabins</div>
                 </div>
                 
-                <Button className="w-full" variant="outline">Explore Kora Nera</Button>
+                <Link href="/fleet/kora-nera" className="w-full">
+                  <Button className="w-full" variant="outline">Explore Kora Nera</Button>
+                </Link>
               </div>
             </div>
 
             {/* KORA SAMAWA */}
             <div className="bg-card rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-border flex flex-col group">
               <div className="h-64 relative overflow-hidden">
-                {/* Vibe: Serene, soft horizon, calm bay */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
                   style={{ backgroundImage: "url('https://093007acd4aeb68adf71.b-cdn.net/wp-content/uploads/2023/08/luxuryyachtpranabyatzaro.png')" }} 
@@ -295,13 +283,14 @@ export default function Home() {
                   Embodying harmony and peaceful waters. Samawa provides a grounded, natural retreat for those who wish to deeply align with the ocean.
                 </p>
                 
-                {/* Specs */}
                 <div className="flex items-center gap-6 mb-8 text-sm text-primary/80 border-t border-border pt-5">
                   <div className="flex items-center gap-2"><Users className="w-4 h-4 text-secondary" /> 12 Guests</div>
                   <div className="flex items-center gap-2"><Anchor className="w-4 h-4 text-secondary" /> 6 Cabins</div>
                 </div>
                 
-                <Button className="w-full" variant="outline">Explore Kora Samawa</Button>
+                <Link href="/fleet/kora-samawa" className="w-full">
+                  <Button className="w-full" variant="outline">Explore Kora Samawa</Button>
+                </Link>
               </div>
             </div>
 
@@ -309,28 +298,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 
-        CABIN SHOWCASE 
-        Rule 40: Stay Close to the Sea. Tidak perlu menu "Cabin" besar, cukup tampilkan sekilas. 
-      */}
+      {/* CABIN SHOWCASE */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             
-            {/* Bagian Gambar Cabin */}
             <div className="w-full lg:w-1/2 relative">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative">
-                {/* Vibe: Luxury wooden cabin, white sheets, ocean view */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: "url('https://i.pinimg.com/1200x/06/62/42/066242b39f628719aa0e2033018718c3.jpg')" }} 
                 />
               </div>
-              {/* Ornamen pelengkap kemewahan */}
               <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary/10 rounded-full blur-3xl -z-10" />
             </div>
 
-            {/* Bagian Teks */}
             <div className="w-full lg:w-1/2">
               <h2 
                 className="text-4xl md:text-5xl font-bold text-primary mb-6"
@@ -357,18 +339,17 @@ export default function Home() {
                 </li>
               </ul>
 
-              <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
-                Explore Cabins
-              </Button>
+              <Link href="/fleet">
+                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+                  Explore Cabins
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 
-        TRUST / PRACTICAL INFO 
-        Rule 41: Menjawab hal praktis (safety, food, snorkeling, pickup) dengan grouping. 
-      */}
+      {/* TRUST / PRACTICAL INFO */}
       <section className="py-24 bg-muted/30 border-t border-border">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
@@ -424,17 +405,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 
-        FINAL CTA 
-        Rule 42: READY TO SAIL? Tell us how you'd like to explore[cite: 1]. 
-      */}
+      {/* FINAL CTA */}
       <section className="py-32 relative overflow-hidden flex items-center justify-center">
-        {/* Background Image with Parallax Vibe */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop')" }} 
         />
-        <div className="absolute inset-0 bg-primary/90" /> {/* Deep ocean blue overlay */}
+        <div className="absolute inset-0 bg-primary/90" />
 
         <div className="relative z-10 container mx-auto px-4 text-center">
           <h2 
@@ -446,9 +423,11 @@ export default function Home() {
           <p className="text-xl text-white/80 font-light mb-10 max-w-xl mx-auto">
             Tell us how you&apos;d like to explore.
           </p>
-          <Button variant="secondary" size="lg" className="px-10 py-6 text-base shadow-xl">
-            Plan Your Journey
-          </Button>
+          <Link href="/contact">
+            <Button variant="secondary" size="lg" className="px-10 py-6 text-base shadow-xl">
+              Plan Your Journey
+            </Button>
+          </Link>
         </div>
       </section>
     </main>
