@@ -1,25 +1,54 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Mendeteksi scroll untuk mengubah style Navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header
+      className={cn(
+        "fixed top-0 z-50 w-full transition-all duration-500 ease-in-out",
+        isScrolled
+          ? "bg-background/95 backdrop-blur-md py-4 shadow-sm"
+          : "bg-transparent py-6" // Transparan dan lebih lega saat di atas
+      )}
+    >
+      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 max-w-7xl">
         
         {/* Kiri: Mobile Hamburger Menu */}
         <div className="flex items-center md:hidden w-1/3">
-          <Button variant="ghost" size="icon" aria-label="Toggle Menu">
-            <Menu className="h-6 w-6 text-foreground" />
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className={cn(isScrolled ? "text-foreground" : "text-white hover:text-white/80 hover:bg-white/20")}
+          >
+            <Menu className="h-6 w-6" />
           </Button>
         </div>
 
         {/* Tengah/Kiri: Brand Logo */}
         <div className="flex flex-1 items-center justify-center md:justify-start w-1/3 md:w-auto">
           <Link href="/" className="flex items-center gap-2">
-            <span 
-              className="text-2xl font-bold tracking-wider text-primary" 
-              style={{ fontFamily: 'var(--font-playfair)' }}
+            <span
+              className={cn(
+                "text-2xl md:text-3xl font-bold tracking-widest transition-colors duration-500",
+                isScrolled ? "text-primary" : "text-white"
+              )}
+              style={{ fontFamily: "var(--font-playfair)" }}
             >
               KORA
             </span>
@@ -27,30 +56,35 @@ export function Navbar() {
         </div>
 
         {/* Tengah: Desktop Navigation */}
-        <nav className="hidden md:flex flex-1 items-center justify-center gap-8 text-sm font-medium">
-          <Link href="/journeys" className="text-muted-foreground hover:text-foreground transition-colors">
-            Journeys
+        <nav
+          className={cn(
+            "hidden md:flex flex-1 items-center justify-center gap-10 text-sm font-medium tracking-wide transition-colors duration-500",
+            isScrolled ? "text-muted-foreground" : "text-white/90"
+          )}
+        >
+          <Link href="/journeys" className="hover:text-secondary transition-colors">
+            JOURNEYS
           </Link>
-          <Link href="/fleet" className="text-muted-foreground hover:text-foreground transition-colors">
-            Fleet
+          <Link href="/fleet" className="hover:text-secondary transition-colors">
+            FLEET
           </Link>
-          <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-            About
+          <Link href="/about" className="hover:text-secondary transition-colors">
+            ABOUT
           </Link>
         </nav>
 
         {/* Kanan: CTA Button */}
         <div className="flex items-center justify-end md:flex-1 w-1/3 md:w-auto">
-          {/* Tampil penuh di desktop/tablet */}
-          <Button variant="secondary" className="hidden sm:inline-flex rounded-full px-6">
+          <Button
+            variant="secondary"
+            className="hidden sm:inline-flex px-8 py-5 text-sm tracking-wide shadow-lg"
+          >
             Plan Your Journey
           </Button>
-          {/* Tampil lebih ringkas di mobile agar tidak merusak layout */}
-          <Button variant="secondary" size="sm" className="sm:hidden rounded-full px-4 text-xs">
+          <Button variant="secondary" size="sm" className="sm:hidden px-4 text-xs shadow-lg">
             Plan
           </Button>
         </div>
-
       </div>
     </header>
   );
