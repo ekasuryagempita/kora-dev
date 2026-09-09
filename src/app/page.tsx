@@ -52,14 +52,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Placeholder untuk bagian selanjutnya (KORA Story) agar kita bisa melihat efek scroll Navbar */}
-      <section className="min-h-screen bg-background flex flex-col items-center justify-center p-8">
-        <h2 className="text-4xl text-primary font-bold mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-          The KORA Story
-        </h2>
-        <p className="text-muted-foreground text-lg text-center max-w-2xl">
-          Scroll ke atas dan ke bawah untuk melihat bagaimana Navbar KORA beradaptasi secara elegan. (Konten cerita KORA akan kita bangun di sini pada tahap selanjutnya).
-        </p>
+      {/* 
+        THE KORA STORY 
+        Rule 37: Koral + Ora. Menjelaskan identitas brand. Harus pendek. 
+      */}
+      <section className="py-24 md:py-32 bg-background flex items-center justify-center">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          
+          <h2 
+            className="text-3xl md:text-5xl font-bold text-primary mb-10 tracking-widest uppercase"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            Koral <span className="text-secondary font-light mx-2 italic">&</span> Ora
+          </h2>
+          
+          <div className="space-y-8 text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
+            <p>
+              KORA represents the harmony of two worlds. 
+              <span className="text-primary font-medium block mt-2">
+                The vibrant life beneath the surface, and the rugged majesty of Komodo&apos;s land.
+              </span>
+            </p>
+            <p className="max-w-2xl mx-auto text-base md:text-lg">
+              From the gentle rhythm of the ocean to the spirit of wild adventure, we curate journeys that embrace both the serenity of the sea and the grandeur of the islands.
+            </p>
+          </div>
+
+        </div>
       </section>
     </main>
   );
