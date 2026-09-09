@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans, Playfair_Display } from "next/font/google";
-import "../styles/globals.css"; // Sesuaikan dengan lokasi globals.css milikmu
+import "../styles/globals.css";
+import { Navbar } from "@/components/Navbar";
 
 const notoSans = Noto_Sans({
   variable: "--font-noto-sans",
@@ -14,7 +15,6 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700"],
 });
 
-// Metadata awal untuk SEO sesuai Rule 109 Blueprint
 export const metadata: Metadata = {
   title: "KORA | Komodo Sailing & Phinisi Experiences",
   description: "Premium sailing company profile with interactive trip discovery.",
@@ -28,9 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${notoSans.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${notoSans.variable} ${playfair.variable} font-sans antialiased bg-background text-foreground flex min-h-screen flex-col`}
       >
-        {children}
+        <Navbar />
+        <main className="flex-1">
+          {children}
+        </main>
       </body>
     </html>
   );
