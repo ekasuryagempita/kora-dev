@@ -80,6 +80,120 @@ export default function Home() {
 
         </div>
       </section>
+      {/* 
+        JOURNEYS SECTION 
+        Rule 38: Choose Your Journey. Card menampilkan title, short description, duration, starting price, dan CTA[cite: 1].
+        Rule 126: Authenticity (Gambar lebih relevan)[cite: 1].
+      */}
+      <section className="py-24 bg-background">
+        <div className="container mx-auto px-4 max-w-7xl">
+          
+          {/* Header Section tanpa tombol "View All" yang redundan */}
+          <div className="max-w-2xl mb-16">
+            <h2 
+              className="text-4xl md:text-5xl font-bold text-primary mb-4"
+              style={{ fontFamily: 'var(--font-playfair)' }}
+            >
+              Choose Your Journey
+            </h2>
+            <p className="text-lg text-muted-foreground font-light">
+              Discover curated sailing experiences tailored to your sense of wonder.
+            </p>
+          </div>
+
+          {/* Grid Layout untuk Immersive Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            {/* Card 1: Komodo / Labuan Bajo */}
+            <div className="group relative h-[500px] rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500">
+              {/* Gambar: Pulau Padar / Komodo */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: "url('https://akcdn.detik.net.id/community/media/visual/2023/05/21/labuan-bajo.png?w=700&q=90')" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+              
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <div className="mb-2 flex items-center justify-between text-white/90 text-sm tracking-widest uppercase">
+                  <span>3D2N</span>
+                  <span className="font-medium text-secondary">From Rp 6.500.000</span>
+                </div>
+                <h3 
+                  className="text-3xl font-bold text-white mb-3"
+                  style={{ fontFamily: 'var(--font-playfair)' }}
+                >
+                  Komodo Signature
+                </h3>
+                <p className="text-white/80 font-light mb-6 line-clamp-2">
+                  Our classic sailing experience through the heart of Komodo National Park. Encounter dragons, pink beaches, and manta rays.
+                </p>
+                <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
+                  Explore Journey
+                </Button>
+              </div>
+            </div>
+
+            {/* Card 2: Lombok to Labuan Bajo */}
+            <div className="group relative h-[500px] rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500">
+              {/* Gambar: Kapal layar / Lautan lepas */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: "url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/33/26/3d/on-the-westernmost-tip.jpg?w=1400&h=800&s=1')" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+              
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <div className="mb-2 flex items-center justify-between text-white/90 text-sm tracking-widest uppercase">
+                  <span>3D2N</span>
+                  <span className="font-medium text-secondary">From Rp 7.000.000</span>
+                </div>
+                <h3 
+                  className="text-3xl font-bold text-white mb-3"
+                  style={{ fontFamily: 'var(--font-playfair)' }}
+                >
+                  Lombok to Labuan Bajo
+                </h3>
+                <p className="text-white/80 font-light mb-6 line-clamp-2">
+                  A grand one-way voyage crossing the majestic Wallace Line. Witness changing landscapes from volcanic craters to savannahs.
+                </p>
+                <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
+                  Explore Journey
+                </Button>
+              </div>
+            </div>
+
+            {/* Card 3: Wae Rebo */}
+            <div className="group relative h-[500px] rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 md:col-span-2 lg:col-span-1">
+              {/* Gambar: Pegunungan Hijau / Manggarai Highland */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                style={{ backgroundImage: "url('https://labuanbajotour.com/wp-content/uploads/2018/08/Desa-Wae-Rebo-sumber-ig-carnaby.indonesia.jpg')" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+              
+              <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                <div className="mb-2 flex items-center justify-between text-white/90 text-sm tracking-widest uppercase">
+                  <span>2D1N</span>
+                  <span className="font-medium text-secondary">From Rp 2.500.000</span>
+                </div>
+                <h3 
+                  className="text-3xl font-bold text-white mb-3"
+                  style={{ fontFamily: 'var(--font-playfair)' }}
+                >
+                  Wae Rebo Expedition
+                </h3>
+                <p className="text-white/80 font-light mb-6 line-clamp-2">
+                  Venture inland to the mystical village above the clouds. A cultural immersion in the highlands of Flores.
+                </p>
+                <Button className="w-full bg-white/20 backdrop-blur-sm text-white border border-white/20 hover:bg-white hover:text-primary transition-all duration-300">
+                  Explore Journey
+                </Button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
