@@ -74,3 +74,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Menyembunyikan scrollbar vertikal di semua browser tetapi tetap bisa di-scroll */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer & Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, & Opera */
+}

@@ -3,51 +3,61 @@ import { Button } from "@/components/ui/button";
 
 export default function JourneysPage() {
   return (
-    <main className="flex min-h-screen flex-col bg-background pt-32">
-      
-      {/* HEADER SECTION - Clean & Centered */}
-      <section className="container mx-auto px-4 max-w-4xl text-center mb-24 md:mb-32 mt-8">
-        <h1 
-          className="text-4xl md:text-6xl font-bold text-primary mb-6 tracking-wide uppercase"
-          style={{ fontFamily: 'var(--font-playfair)' }}
-        >
-          Curated Journeys
-        </h1>
-        <p className="text-lg md:text-xl text-muted-foreground font-light leading-relaxed">
-          Embark on a voyage where untouched nature meets unparalleled comfort. 
-          Choose your path through the wonders of the Indonesian archipelago.
-        </p>
+    <main className="flex min-h-screen flex-col bg-background">
+
+      {/* CINEMATIC HEADER - Diperpendek sedikit di HP agar tidak terlalu mendominasi */}
+      <section className="relative flex h-[35svh] md:h-[60svh] w-full items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://i.pinimg.com/1200x/27/86/75/278675d63555b232930e0e98669ea8d5.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+
+        <div className="relative z-10 container mx-auto px-4 text-center mt-12 md:mt-20">
+          <h1
+            className="text-3xl md:text-6xl font-bold text-white mb-2 md:mb-6 tracking-wide uppercase drop-shadow-lg"
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
+            Curated Journeys
+          </h1>
+          <p className="text-[11px] md:text-lg text-white/90 font-light leading-relaxed max-w-2xl mx-auto drop-shadow-md px-4">
+            Embark on a voyage where untouched nature meets unparalleled comfort.
+          </p>
+        </div>
       </section>
 
-      {/* JOURNEYS LIST - CLASSIC EDITORIAL MAGAZINE SPREAD */}
-      <section className="container mx-auto px-4 max-w-7xl pb-32">
-        
+      {/* JOURNEYS LIST - DIET KETAT UNTUK MOBILE */}
+      <section className="container mx-auto px-5 max-w-6xl py-8 md:py-24">
+
         {/* 1. KOMODO SIGNATURE */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20 items-center py-20 border-t border-primary/20 group">
-          {/* Image - Clean, no heavy shadows */}
-          <div className="md:col-span-7 aspect-[3/2] overflow-hidden rounded-xl">
-            <div 
+        <div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center py-8 md:py-16 border-b border-border/60 group">
+          {/* Image - Disusutkan menjadi 200px di HP */}
+          <div className="w-full md:w-1/2 h-[200px] md:h-[400px] shrink-0 overflow-hidden rounded-xl shadow-sm">
+            <div
               className="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
-              style={{ backgroundImage: "url('https://images.unsplash.com/photo-1516690553959-71a414d6b9b6?q=80&w=2070&auto=format&fit=crop')" }} 
+              style={{ backgroundImage: "url('https://i.pinimg.com/1200x/fd/4e/14/fd4e14e2ff8b3f60fc0f741333375a0c.jpg')" }}
             />
           </div>
-          
-          {/* Text - Elegant, breathable */}
-          <div className="md:col-span-5 flex flex-col items-start">
-            <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-4">
-              3 Days / 2 Nights &nbsp;—&nbsp; From Rp 6.500.000
+
+          {/* Text */}
+          <div className="w-full md:w-1/2 flex flex-col items-start justify-center">
+            <p className="text-secondary font-medium tracking-widest uppercase text-[9px] md:text-xs mb-1.5 md:mb-4">
+              3D2N &nbsp;—&nbsp; From Rp 6.500.000
             </p>
-            <h2 
-              className="text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight"
+            <h2
+              className="text-2xl md:text-5xl font-bold text-primary mb-2.5 md:mb-6 leading-tight"
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
-              Komodo <br /> Signature
+              Komodo Signature
             </h2>
-            <p className="text-muted-foreground font-light mb-10 leading-relaxed text-lg">
+            <p className="text-muted-foreground font-light mb-5 md:mb-8 leading-relaxed text-xs md:text-base">
               Our quintessential sailing experience. Navigate through the heart of Komodo National Park, walk alongside ancient dragons, and snorkel in pristine pink sand beaches.
             </p>
-            <Link href="/journeys/komodo-signature">
-              <Button variant="outline" className="rounded-md border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-sm tracking-widest uppercase transition-all">
+            
+            {/* Tombol Ramping (Inline-block & padding kecil) */}
+            <Link href="/journeys/komodo-signature" className="inline-block">
+              <Button variant="outline" className="rounded-md border-primary text-primary hover:bg-primary hover:text-white px-6 md:px-8 py-2.5 md:py-4 text-[10px] md:text-xs tracking-widest uppercase transition-all">
                 Discover Itinerary
               </Button>
             </Link>
@@ -55,63 +65,67 @@ export default function JourneysPage() {
         </div>
 
         {/* 2. LOMBOK TO LABUAN BAJO */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20 items-center py-20 border-t border-primary/20 group">
-          {/* Text - Alternating to the left on Desktop */}
-          <div className="md:col-span-5 flex flex-col items-start order-2 md:order-1">
-            <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-4">
-              3 Days / 2 Nights &nbsp;—&nbsp; From Rp 7.000.000
+        <div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center py-8 md:py-16 border-b border-border/60 group">
+          {/* Text */}
+          <div className="w-full md:w-1/2 flex flex-col items-start justify-center order-2 md:order-1">
+            <p className="text-secondary font-medium tracking-widest uppercase text-[9px] md:text-xs mb-1.5 md:mb-4">
+              3D2N &nbsp;—&nbsp; From Rp 7.000.000
             </p>
-            <h2 
-              className="text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight"
+            <h2
+              className="text-2xl md:text-5xl font-bold text-primary mb-2.5 md:mb-6 leading-tight"
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
-              Lombok to <br /> Labuan Bajo
+              Lombok to Labuan Bajo
             </h2>
-            <p className="text-muted-foreground font-light mb-10 leading-relaxed text-lg">
-              A grand crossing across the Wallace Line. Witness the dramatic shift from lush volcanic craters in Lombok to the rugged, untamed savannahs of Flores, while swimming with majestic manta rays.
+            <p className="text-muted-foreground font-light mb-5 md:mb-8 leading-relaxed text-xs md:text-base">
+              A grand crossing across the Wallace Line. Witness the dramatic shift from lush volcanic craters in Lombok to the rugged, untamed savannahs of Flores.
             </p>
-            <Link href="/journeys/lombok-to-labuan-bajo">
-              <Button variant="outline" className="rounded-md border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-sm tracking-widest uppercase transition-all">
+            
+            {/* Tombol Ramping */}
+            <Link href="/journeys/lombok-to-labuan-bajo" className="inline-block">
+              <Button variant="outline" className="rounded-md border-primary text-primary hover:bg-primary hover:text-white px-6 md:px-8 py-2.5 md:py-4 text-[10px] md:text-xs tracking-widest uppercase transition-all">
                 Discover Itinerary
               </Button>
             </Link>
           </div>
 
           {/* Image */}
-          <div className="md:col-span-7 aspect-[3/2] overflow-hidden rounded-xl order-1 md:order-2">
-            <div 
+          <div className="w-full md:w-1/2 h-[200px] md:h-[400px] shrink-0 overflow-hidden rounded-xl shadow-sm order-1 md:order-2">
+            <div
               className="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
-              style={{ backgroundImage: "url('https://images.unsplash.com/photo-1505993597083-3bf4382892b3?q=80&w=2013&auto=format&fit=crop')" }} 
+              style={{ backgroundImage: "url('https://i.pinimg.com/736x/49/af/a4/49afa4486034609f3ed12ee75130965b.jpg')" }}
             />
           </div>
         </div>
 
         {/* 3. WAE REBO EXPEDITION */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20 items-center py-20 border-y border-primary/20 group">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-16 items-center py-8 md:py-16 group">
           {/* Image */}
-          <div className="md:col-span-7 aspect-[3/2] overflow-hidden rounded-xl">
-            <div 
+          <div className="w-full md:w-1/2 h-[200px] md:h-[400px] shrink-0 overflow-hidden rounded-xl shadow-sm">
+            <div
               className="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
-              style={{ backgroundImage: "url('https://images.unsplash.com/photo-1580914960731-b823df162fa9?q=80&w=2070&auto=format&fit=crop')" }} 
+              style={{ backgroundImage: "url('https://i.pinimg.com/1200x/a4/91/e6/a491e6f43624aeb2b87ba04ea104a094.jpg')" }}
             />
           </div>
-          
+
           {/* Text */}
-          <div className="md:col-span-5 flex flex-col items-start">
-            <p className="text-secondary font-medium tracking-[0.2em] uppercase text-xs mb-4">
-              2 Days / 1 Night &nbsp;—&nbsp; From Rp 2.500.000
+          <div className="w-full md:w-1/2 flex flex-col items-start justify-center">
+            <p className="text-secondary font-medium tracking-widest uppercase text-[9px] md:text-xs mb-1.5 md:mb-4">
+              2D1N &nbsp;—&nbsp; From Rp 2.500.000
             </p>
-            <h2 
-              className="text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight"
+            <h2
+              className="text-2xl md:text-5xl font-bold text-primary mb-2.5 md:mb-6 leading-tight"
               style={{ fontFamily: 'var(--font-playfair)' }}
             >
-              Wae Rebo <br /> Expedition
+              Wae Rebo Expedition
             </h2>
-            <p className="text-muted-foreground font-light mb-10 leading-relaxed text-lg">
-              Step off the boat and venture into the mystical highlands of Flores. Trek through lush rainforests to reach the "Village Above the Clouds," experiencing an authentic cultural immersion.
+            <p className="text-muted-foreground font-light mb-5 md:mb-8 leading-relaxed text-xs md:text-base">
+              Step off the boat and venture into the mystical highlands of Flores. Trek through lush rainforests to reach the "Village Above the Clouds", experiencing an authentic cultural immersion.
             </p>
-            <Link href="/journeys/wae-rebo">
-              <Button variant="outline" className="rounded-md border-primary text-primary hover:bg-primary hover:text-white px-8 py-6 text-sm tracking-widest uppercase transition-all">
+            
+            {/* Tombol Ramping */}
+            <Link href="/journeys/wae-rebo" className="inline-block">
+              <Button variant="outline" className="rounded-md border-primary text-primary hover:bg-primary hover:text-white px-6 md:px-8 py-2.5 md:py-4 text-[10px] md:text-xs tracking-widest uppercase transition-all">
                 Discover Itinerary
               </Button>
             </Link>

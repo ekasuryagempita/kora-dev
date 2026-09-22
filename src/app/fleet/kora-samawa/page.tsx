@@ -1,79 +1,128 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Users, Anchor, Maximize, Wind, Compass, Waves, BedDouble, Check } from "lucide-react";
+import { Users, Anchor, Maximize, Wind, Compass, Waves, Check, ChevronRight } from "lucide-react";
+
+// Data Spesifikasi Kora Samawa
+const VESSEL_SPECS = [
+  { label: "Length / Beam", value: "32m / 7.2m", icon: Maximize },
+  { label: "Cruising Speed", value: "8 - 10 Knots", icon: Wind },
+  { label: "Capacity", value: "12 Guests", icon: Users },
+  { label: "Cabins", value: "6 En-suite", icon: Anchor },
+  { label: "Navigation", value: "GPS, AIS, Radar", icon: Compass },
+  { label: "Water Supply", value: "5500L / Watermaker", icon: Waves },
+];
+
+// Data Kabin Kora Samawa (Total 6 Kabin)
+const CABINS = [
+  {
+    id: "master",
+    name: "Master Suite",
+    subtitle: "1 Cabin • Upper Deck",
+    desc: "A haven of tranquility at the highest vantage point of the vessel. Experience absolute peace with earth-toned linens, a private balcony, and undisturbed views of the horizon.",
+    img: "https://i.pinimg.com/1200x/b8/04/78/b80478a67fc21e3aa90d321e3eb50645.jpg",
+    amenities: ["King-size bed", "Private aft balcony", "Panoramic ocean windows", "Writing desk", "Luxury en-suite bathroom"]
+  },
+  {
+    id: "signature",
+    name: "Signature Suite",
+    subtitle: "1 Cabin • Main Deck",
+    desc: "Seamlessly blending indoor comfort with the vast outdoors. This suite offers large portrait windows and easy access to the alfresco dining area for ultimate relaxation.",
+    img: "https://i.pinimg.com/1200x/4a/88/f7/4a88f7b985ea87dea5a0f3880787f466.jpg",
+    amenities: ["Queen-size bed", "Large portrait windows", "Private lounge chair", "Premium climate control", "En-suite bathroom"]
+  },
+  {
+    id: "deluxe",
+    name: "Deluxe Cabins",
+    subtitle: "4 Cabins • Lower Deck",
+    desc: "Grounded and deeply calming. Our lower deck cabins use natural wood textures and gentle ambient lighting to ensure the most restful sleep while sailing.",
+    img: "https://i.pinimg.com/1200x/e7/84/ed/e784eda9c350e7c553632e5715d860f2.jpg",
+    amenities: ["Queen or Twin configuration", "Classic porthole windows", "Spacious wardrobe storage", "Warm ambient lighting", "En-suite bathroom"]
+  }
+];
 
 export default function KoraSamawaDetail() {
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
     <main className="flex min-h-screen flex-col bg-background">
       
-      {/* HERO SECTION */}
-      <section className="relative flex h-[70vh] w-full items-center justify-center overflow-hidden">
+      {/* HERO SECTION - Statis & Clean (Navbar transparan aman karena tidak ada pt-) */}
+      <section className="relative flex h-[45svh] md:h-[70svh] w-full items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?q=80&w=1974&auto=format&fit=crop')" }} 
+          style={{ backgroundImage: "url('https://093007acd4aeb68adf71.b-cdn.net/wp-content/uploads/2023/08/luxuryyachtpranabyatzaro.png')" }} 
         />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-background via-black/20 to-transparent" />
         
-        <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center mt-20">
+        <div className="relative z-10 container mx-auto px-5 flex flex-col items-center text-center mt-6 md:mt-20">
           <div className="mb-4 flex items-center gap-4 text-sm tracking-widest uppercase text-white/90 font-medium">
-            <span>The Serenity</span>
+            <span>THE SERENITY</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg" style={{ fontFamily: 'var(--font-playfair)' }}>
+          <h1 
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-2 md:mb-6 drop-shadow-lg" 
+            style={{ fontFamily: 'var(--font-playfair)' }}
+          >
             Kora Samawa
           </h1>
-          <p className="text-xl text-white/90 font-light drop-shadow-md max-w-2xl">
-            A grounded, natural retreat designed to deeply align you with the ocean's gentle rhythm.
+          <p className="text-xs md:text-xl text-white/90 font-light drop-shadow-md max-w-2xl px-2">
+            Embodying harmony and peaceful waters for a natural retreat.
           </p>
         </div>
       </section>
 
-      {/* OVERVIEW & SPECIFICATIONS */}
-      <section className="py-20 bg-background border-b border-border">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      {/* OVERVIEW & FULL SPECIFICATIONS */}
+      <section className="py-12 md:py-24 bg-background">
+        <div className="container mx-auto px-5 sm:px-6 max-w-7xl">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-start">
             
-            {/* The Philosophy */}
-            <div>
-              <h2 className="text-3xl font-bold text-primary mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>Design & Philosophy</h2>
-              <div className="text-muted-foreground font-light leading-relaxed space-y-6 text-lg">
-                <p>
-                  Embodying harmony and peaceful waters, Kora Samawa is designed to blur the lines between indoor luxury and outdoor majesty. Her architecture highlights earthy tones, raw natural textures, and open-air spaces.
+            {/* Left: The Philosophy */}
+            <div className="w-full lg:w-1/2">
+              <div className="flex items-center gap-3 mb-5 md:mb-8">
+                <div className="w-8 h-px bg-secondary" />
+                <h2 className="text-[10px] md:text-sm font-medium tracking-widest uppercase text-secondary">
+                  Design & Philosophy
+                </h2>
+              </div>
+              <h3 className="text-xl md:text-3xl font-bold text-primary mb-4 md:mb-6 leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
+                A grounded sanctuary blending earthy tones and open spaces.
+              </h3>
+              <div className="text-muted-foreground font-light leading-relaxed md:leading-loose space-y-4 md:space-y-6 text-sm md:text-lg">
+                <p className="text-primary/90 font-medium">
+                  Designed for those who wish to deeply align with the ocean's gentle rhythm, Kora Samawa offers an organic, unhurried sailing experience.
                 </p>
                 <p>
-                  Ideal for those who seek mindfulness and tranquility, Samawa features a dedicated yoga/meditation deck, spacious lounging areas, and 6 beautifully crafted cabins accommodating up to 12 guests in absolute serenity.
+                  With open-air lounges and a color palette inspired by nature, this vessel caters to 12 guests seeking absolute tranquility. Whether you are practicing morning yoga on the sundeck or enjoying a quiet read by the bow, Samawa guarantees an atmosphere of total serenity.
                 </p>
               </div>
             </div>
 
-            {/* Technical Specifications */}
-            <div className="bg-muted/30 p-8 md:p-10 rounded-xl border border-border">
-              <h3 className="text-lg font-bold text-primary mb-8 uppercase tracking-wider">Vessel Specifications</h3>
-              
-              <div className="grid grid-cols-2 gap-y-8 gap-x-4">
-                <div>
-                  <p className="text-xs text-secondary font-medium tracking-widest uppercase mb-1">Length / Beam</p>
-                  <p className="text-primary font-medium flex items-center gap-2"><Maximize className="w-4 h-4 text-muted-foreground" /> 32m / 7.2m</p>
-                </div>
-                <div>
-                  <p className="text-xs text-secondary font-medium tracking-widest uppercase mb-1">Cruising Speed</p>
-                  <p className="text-primary font-medium flex items-center gap-2"><Wind className="w-4 h-4 text-muted-foreground" /> 8 - 10 Knots</p>
-                </div>
-                <div>
-                  <p className="text-xs text-secondary font-medium tracking-widest uppercase mb-1">Capacity</p>
-                  <p className="text-primary font-medium flex items-center gap-2"><Users className="w-4 h-4 text-muted-foreground" /> 12 Guests</p>
-                </div>
-                <div>
-                  <p className="text-xs text-secondary font-medium tracking-widest uppercase mb-1">Cabins</p>
-                  <p className="text-primary font-medium flex items-center gap-2"><Anchor className="w-4 h-4 text-muted-foreground" /> 6 En-suite</p>
-                </div>
-                <div>
-                  <p className="text-xs text-secondary font-medium tracking-widest uppercase mb-1">Navigation</p>
-                  <p className="text-primary font-medium flex items-center gap-2"><Compass className="w-4 h-4 text-muted-foreground" /> GPS, AIS, Radar</p>
-                </div>
-                <div>
-                  <p className="text-xs text-secondary font-medium tracking-widest uppercase mb-1">Water Supply</p>
-                  <p className="text-primary font-medium flex items-center gap-2"><Waves className="w-4 h-4 text-muted-foreground" /> 5500L / Watermaker</p>
+            {/* Right: Technical Specifications */}
+            <div className="w-full lg:w-1/2">
+              <div className="bg-muted/10 md:bg-white md:dark:bg-muted/10 p-6 md:p-10 rounded-2xl md:shadow-sm border border-border/40">
+                <h3 className="text-base md:text-xl font-bold text-primary mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  Vessel Specifications
+                </h3>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 divide-y divide-border/50 sm:divide-y-0">
+                  {VESSEL_SPECS.map((spec, idx) => (
+                    <div key={idx} className={`flex items-start gap-3 py-3 md:py-4 ${idx > 1 ? "sm:border-t sm:border-border/50" : ""}`}>
+                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-muted/40 flex items-center justify-center shrink-0">
+                        <spec.icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-secondary" />
+                      </div>
+                      <div>
+                        <p className="text-[9px] md:text-[10px] text-muted-foreground uppercase tracking-widest font-medium mb-0.5">
+                          {spec.label}
+                        </p>
+                        <p className="text-xs md:text-sm text-primary font-medium">
+                          {spec.value}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -82,63 +131,90 @@ export default function KoraSamawaDetail() {
         </div>
       </section>
 
-      {/* CABIN CONFIGURATION */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-bold text-primary mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Cabin Configuration
+      {/* CABIN CONFIGURATION - Slim Interactive Tabs */}
+      <section className="py-12 md:py-24 bg-muted/20 border-y border-border/50">
+        <div className="container mx-auto px-5 max-w-5xl">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-4xl font-bold text-primary mb-3" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Cabin Sanctuaries
             </h2>
-            <p className="text-lg text-muted-foreground font-light">
-              Six harmonious spaces featuring soft linens, natural ventilation options, and en-suite bathrooms, crafted to bring you closer to nature.
+            <p className="text-xs md:text-base text-muted-foreground font-light max-w-xl mx-auto">
+              Enam kabin bernuansa alam yang dirancang untuk kedamaian absolut.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            
-            {/* Signature Suites */}
-            <div className="border border-border rounded-xl p-8 hover:shadow-lg transition-shadow bg-card">
-              <BedDouble className="w-8 h-8 text-secondary mb-6" />
-              <h3 className="text-2xl font-bold text-primary mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>Signature Suites</h3>
-              <p className="text-xs text-secondary tracking-widest uppercase font-medium mb-4">2 Cabins • Upper Deck</p>
-              <p className="text-muted-foreground font-light text-sm mb-6 leading-relaxed">
-                Elevated sanctuaries offering unobstructed ocean vistas, natural light, and immediate access to the open-air lounge.
-              </p>
-              <ul className="space-y-2 text-sm text-primary/80 font-light">
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-secondary" /> Queen-size bed</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-secondary" /> Floor-to-ceiling style windows</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-secondary" /> Premium natural bath amenities</li>
-              </ul>
-            </div>
-
-            {/* Deluxe Cabins */}
-            <div className="border border-border rounded-xl p-8 hover:shadow-lg transition-shadow bg-card">
-              <BedDouble className="w-8 h-8 text-secondary mb-6" />
-              <h3 className="text-2xl font-bold text-primary mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>Deluxe Cabins</h3>
-              <p className="text-xs text-secondary tracking-widest uppercase font-medium mb-4">4 Cabins • Lower Deck</p>
-              <p className="text-muted-foreground font-light text-sm mb-6 leading-relaxed">
-                Grounding and serene cabins featuring beautiful woodwork, offering a cool and tranquil environment for deep relaxation.
-              </p>
-              <ul className="space-y-2 text-sm text-primary/80 font-light">
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-secondary" /> Queen or Twin configuration</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-secondary" /> Ample wardrobe space</li>
-                <li className="flex items-center gap-2"><Check className="w-3.5 h-3.5 text-secondary" /> Private en-suite bathroom</li>
-              </ul>
-            </div>
-
+          {/* Deretan Tombol - Ramping di HP */}
+          <div className="flex justify-start md:justify-center gap-2 overflow-x-auto pb-4 mb-4 md:mb-8 snap-x [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none">
+            {CABINS.map((cabin, idx) => (
+              <button
+                key={cabin.id}
+                onClick={() => setActiveTab(idx)}
+                className={`relative shrink-0 snap-center px-4 py-2 md:px-8 md:py-3.5 rounded-full text-[9px] md:text-xs tracking-widest uppercase font-medium transition-colors duration-200 ${
+                  activeTab === idx 
+                    ? "text-primary bg-background shadow-sm border border-border" 
+                    : "text-muted-foreground hover:text-primary border border-transparent hover:bg-background/50"
+                }`}
+              >
+                {cabin.name}
+              </button>
+            ))}
           </div>
+
+          {/* Konten Kabin - Tinggi Gambar Dibatasi, Padding Dikecilkan, Animasi Simple Fade */}
+          <div className="bg-background rounded-2xl overflow-hidden shadow-sm border border-border/50 animate-in fade-in duration-300" key={activeTab}>
+            <div className="flex flex-col md:flex-row">
+              
+              {/* Gambar Visual */}
+              <div className="w-full md:w-[50%] h-55 md:h-auto md:aspect-square bg-cover bg-center" style={{ backgroundImage: `url('${CABINS[activeTab].img}')` }} />
+              
+              {/* Info Kabin */}
+              <div className="w-full md:w-[50%] p-5 md:p-10 flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 bg-secondary/10 px-2.5 py-1 rounded-full w-max mb-3 md:mb-5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                  <p className="text-[9px] md:text-[10px] text-secondary tracking-widest uppercase font-semibold">
+                    {CABINS[activeTab].subtitle}
+                  </p>
+                </div>
+                
+                {/* Judul & Deskripsi lebih ramping */}
+                <h3 className="text-2xl md:text-4xl font-bold text-primary mb-3 md:mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+                  {CABINS[activeTab].name}
+                </h3>
+                <p className="text-muted-foreground font-light text-xs md:text-sm leading-relaxed mb-5 md:mb-8">
+                  {CABINS[activeTab].desc}
+                </p>
+                
+                {/* Amenities List */}
+                <div className="space-y-2.5 text-[11px] md:text-sm text-primary/80 font-light border-t border-border/50 pt-4 md:pt-6 w-full">
+                  {CABINS[activeTab].amenities.map((item, i) => (
+                    <div key={i} className="flex items-start gap-2.5">
+                      <div className="w-4 h-4 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 mt-px">
+                        <Check className="w-2.5 h-2.5 text-secondary" />
+                      </div>
+                      <span className="leading-relaxed">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* CALL TO ACTION */}
-      <section className="py-24 bg-muted/30 border-t border-border flex flex-col items-center justify-center text-center">
-        <h2 className="text-3xl font-bold text-primary mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>Find Your Peace</h2>
-        <p className="text-muted-foreground font-light mb-10 max-w-lg">
-          Kora Samawa invites you to disconnect from the noise and reconnect with nature.
+      {/* CALL TO ACTION - Clean & Simple */}
+      <section className="py-16 md:py-24 bg-background flex flex-col items-center justify-center text-center px-5">
+        <h2 className="text-2xl md:text-4xl font-bold text-primary mb-3 md:mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+          Sail with Kora Samawa
+        </h2>
+        <p className="text-muted-foreground font-light text-xs md:text-base mb-8 md:mb-10 max-w-md leading-relaxed">
+          Experience the ultimate serene journey. Kora Samawa is currently available for private charters and select scheduled expeditions.
         </p>
-        <Link href="/journeys">
-          <Button size="lg" className="px-10 py-6 text-sm tracking-widest uppercase">
-            View Available Journeys
+        
+        <Link href="/journeys" className="inline-block group">
+          <Button variant="outline" className="px-6 md:px-10 py-5 md:py-6 text-[10px] md:text-xs tracking-widest uppercase rounded-full border-primary/30 flex items-center gap-2 transition-all">
+            View Available Journeys <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
           </Button>
         </Link>
       </section>
